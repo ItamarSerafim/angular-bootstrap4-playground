@@ -1,33 +1,91 @@
-
-	<header>
-		<nav class="navbar navbar-expand-md flex-row site-top-nav">
-			<button class="navbar-brand btn" aria-label="Toggle side navigation" title="Toggle side navigation" (click)="toggleSideNav()">
-				<fa-icon icon="bars"></fa-icon>
-			</button>
+<!-- Header -->
+<div class="sidenav-mode-side ">
+  <header>
+    <nav class="navbar navbar-expand-md flex-row site-top-nav">
+      <button
+        class="navbar-brand btn"
+        aria-label="Toggle side navigation"
+        title="Toggle side navigation"
+        (click)="toggleSideNav()"
+      >
+        <fa-icon icon="bars"></fa-icon>
+      </button>
       <a routerLink="home">
         <span class="app-title-wrap">
-          
-          <span *ngIf="windowWidthGt768" class="navbar-title">Angular{{ngVersion}} with Bootstrap 4 playground</span>
-          <span *ngIf="!windowWidthGt768" class="navbar-title">Angular playground</span>
+          <span *ngIf="windowWidthGt768" class="navbar-title"
+            >Angular{{ ngVersion }} with Bootstrap 4 playground</span
+          >
+          <span *ngIf="!windowWidthGt768" class="navbar-title"
+            >Angular playground</span
+          >
         </span>
-
       </a>
-        <span class="flex-spacer"></span>
-        <ul class="nav list-inline">
-          <li class="list-inline-item"><a routerLink="home" class="btn" aria-label="Home" title="Home" ><fa-icon icon="home" ></fa-icon></a></li> 
-          <li class="list-inline-item"><a routerLink="notifications" class="btn" aria-label="Notifications" title="Notifications"><fa-icon icon="bell" ></fa-icon></a></li> 
-          <li class="list-inline-item"><a routerLink="login" class="btn" aria-label="Log in" title="Log in"><fa-icon icon="user" ></fa-icon></a></li> 
-          <li class="list-inline-item"></li> 
-        </ul>
-        
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn" aria-label="More" id="more-options-trigger" title="More" ngbDropdownToggle><fa-icon icon="ellipsis-v" ></fa-icon></button>
-          <div ngbDropdownMenu aria-label="More options">
-            <button ngbDropdownItem>Action - 1</button>
-            <button ngbDropdownItem>Another Action</button>
-            <button ngbDropdownItem>Something else is here</button>
-          </div>
+      <span class="flex-spacer"></span>
+      <ul class="nav list-inline">
+        <li class="list-inline-item">
+          <a routerLink="home" class="btn" aria-label="Home" title="Home"
+            ><fa-icon icon="home"></fa-icon
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a
+            routerLink="notifications"
+            class="btn"
+            aria-label="Notifications"
+            title="Notifications"
+            ><fa-icon icon="bell"></fa-icon
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a routerLink="login" class="btn" aria-label="Log in" title="Log in"
+            ><fa-icon icon="user"></fa-icon
+          ></a>
+        </li>
+        <li class="list-inline-item"></li>
+      </ul>
+
+      <div ngbDropdown class="d-inline-block">
+        <button
+          class="btn"
+          aria-label="More"
+          id="more-options-trigger"
+          title="More"
+          ngbDropdownToggle
+        >
+          <fa-icon icon="ellipsis-v"></fa-icon>
+        </button>
+        <div ngbDropdownMenu aria-label="More options">
+          <button ngbDropdownItem>Action - 1</button>
+          <button ngbDropdownItem>Another Action</button>
+          <button ngbDropdownItem>Something else is here</button>
         </div>
-      </nav>
-    </header>
-    <app-side-menu (requestHideMenu)="sideNav.close()" #sideMenus [links]="sideMenuLinks" ></app-side-menu> 
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main class="flex-row">
+    <app-side-nav #sideNav>
+      <app-side-menu
+        (requestHideMenu)="sideNav.close()"
+        #sideMenus
+        [links]="sideMenuLinks"
+      ></app-side-menu>
+    </app-side-nav>
+
+    <div class="container main">
+      <router-outlet></router-outlet>
+
+      <!-- <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary" *ngFor="let breakPoint of breakPoints; let i = index">
+            {{breakPoint.text}}</button>            
+        </div> -->
+    </div>
+  </main>
+  <footer class="main-footer">
+    <h3 class="footer-title">
+      Powered by Angular{{ ngVersion }} and Bootstrap 4
+    </h3>
+  </footer>
+  <!-- Footer -->
+</div>

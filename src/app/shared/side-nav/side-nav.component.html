@@ -1,0 +1,9 @@
+<div class="sidenav-container {{mode}}" [ngClass]="{'open': sideNavService.opened}">
+  <div class="back-drop" (click)="backDropClick($event); $event.stopPropagation()">
+    <nav class="side-nav">
+      <ng-content></ng-content>
+    </nav>
+
+  </div>
+
+</div>

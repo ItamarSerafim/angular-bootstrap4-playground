@@ -10,6 +10,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { LinkService } from './core/site-navigation/link.service';
 
+import { SideNavModule } from './shared/side-nav/side-nav.module';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -29,6 +31,7 @@ import { AppComponent } from './app.component';
     BrowserModule,  
     LayoutModule,
     HttpClientModule,
+    SideNavModule,
     FormsModule,
     NgbModule,
     FontAwesomeModule,
