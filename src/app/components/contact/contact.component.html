@@ -1,0 +1,93 @@
+<h1>Hello Contact Page</h1>
+
+
+
+  <form action="" #simpleForm="ngForm" (submit)="submit()">
+    <header>
+      <h1 class="form-title">Drop me a line</h1>
+    </header>
+      <div class="form-group col-xs-12 col-sm-6" 
+        [ngClass]="{'has-error': (!firstNameInput.valid && (firstNameInput.touched || firstNameInput.dirty))}">
+        <label for="first-name" class="control-label">First Name:</label>
+        <input type="text" class="form-control" id="first-name" name="first-name"
+          tabindex="1"
+          minlength="3"
+          maxlength="35"
+          required
+          [(ngModel)]="firstName" #firstNameInput="ngModel"/>
+          <span class="help-block"  
+            *ngIf="firstNameInput.errors && (firstNameInput.touched || firstNameInput.dirty)">
+            <ul>
+              <li *ngIf="firstNameInput.errors.required">This field is required</li>
+              <li *ngIf="firstNameInput.errors.minlength || firstNameInput.errors.maxlength">This field must have at minimum 3 and at maximum 15 characters.</li>
+            </ul>
+          </span>
+      </div>
+
+      <div class="form-group col-xs-12 col-sm-6" 
+        [ngClass]="{'has-error': (!lastNameInput.valid && (lastNameInput.touched || lastNameInput.dirty))}">
+        <label for="last-name" class="control-label">Last Name:</label>
+        <input type="text" class="form-control" id="last-name" name="last-name"
+          tabindex="2"
+          minlength="3"
+          maxlength="55"
+          required
+        [(ngModel)]="lastName" #lastNameInput="ngModel"/>
+          <span class="help-block"  
+            *ngIf="lastNameInput.errors && (lastNameInput.touched || lastNameInput.dirty)">
+            <ul>
+              <li *ngIf="lastNameInput.errors.required">This field is required</li>
+              <li *ngIf="lastNameInput.errors.minlength || lastNameInput.errors.maxlength">This field must have at minimum 3 and at maximum 55 characters.</li>
+            </ul>
+          </span>
+      </div>
+
+      <div class="form-group col-xs-12 "
+      [ngClass]="{'has-error': (!emailInput.valid && (emailInput.touched || emailInput.dirty))}">
+        <label for="email" class="control-label">E-mail:</label>
+        <!-- Do not use pattern for e-mail validation. -->
+        <input type="email" class="form-control" id="email" name="email"
+          tabindex="3"
+          required 
+          [(ngModel)]="email" #emailInput="ngModel" email/>
+          <span class="help-block"  
+            *ngIf="emailInput.errors && (emailInput.touched || emailInput.dirty)">
+            <ul>
+              <li *ngIf="emailInput.errors.required">This field is required</li>
+              <li *ngIf="!emailInput.errors.valid">Please provide a valid e-mail.</li>
+            </ul>
+          </span>
+      </div> 
+
+      <div class="form-group col-xs-12 "
+      [ngClass]="{'has-error': (!messageInput.valid && (messageInput.touched || messageInput.dirty))}">
+        <label for="message" class="control-label">Message:</label>
+        <!-- Do not use pattern for e-mail validation. -->
+        <textarea class="form-control" id="message" name="message"
+          tabindex="4"
+          minlength="3"
+          maxlength=400          
+          required 
+          [(ngModel)]="message" #messageInput="ngModel" ></textarea>
+          <span class="help-block"  
+            *ngIf="messageInput.errors && (messageInput.touched || messageInput.dirty)">
+            <ul>
+              <li *ngIf="messageInput.errors.required">This field is required</li>
+              <li *ngIf="messageInput.errors.minlength || messageInput.errors.maxlength">This field must have at minimum 3 and at maximum 400 characters..</li>
+            </ul>
+          </span>
+      </div>
+      
+      <div class="clearfix"></div>
+      <footer class="col-lg-12">
+         <div class="form-group form-tool-bar">
+          <button type="submit" class="btn btn-primary" [disabled]="!simpleForm.valid">Submit</button>
+          <span class="flex"></span>
+          <button type="button" class="btn btn-danger" (click)="simpleForm.reset()">Clear</button>
+         </div>
+      </footer>
+  </form>
+  <div class="col-lg-12" *ngIf="formDataStr && simpleForm.valid">
+    <p><b>This data would be sent to the server:</b></p>
+    <pre >{{formDataStr}}</pre>
+  </div>

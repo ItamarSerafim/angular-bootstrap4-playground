@@ -1,0 +1,10 @@
+ul>li{ list-style: none}
+.form-title{
+  text-align: center;
+}
+.form-tool-bar{
+  display: flex;
+  flex-flow: row;
+  .btn{flex:1}
+}
+.flex{flex:1;}
