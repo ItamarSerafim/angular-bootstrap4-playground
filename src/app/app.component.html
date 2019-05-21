@@ -1,24 +1,32 @@
-<header>
-  <nav>
-    <button class="navbar-brand btn"><fa-icon icon="bars"></fa-icon></button>
-  </nav>
-</header>
-<div class="container">
-    <h1>Hello App.</h1>
-     <p><a routerLink="login">Login</a></p>
-     <p><a routerLink="home">Home</a></p>
-     <p><a routerLink="contact">Contact</a></p>
-    <router-outlet></router-outlet>
-</div>
-<!-- 
-  @angular/common7.0.0
-@angular/compiler7.0.0
-@angular/core7.0.0
-@angular/forms7.0.0
-@angular/platform-browser7.0.0
-@angular/platform-browser-dynamic7.0.0
-@angular/router7.0.0
-core-js 
-rxjs
-zone
--->
+
+	<header>
+		<nav class="navbar navbar-expand-md flex-row site-top-nav">
+			<button class="navbar-brand btn" aria-label="Toggle side navigation" title="Toggle side navigation" (click)="toggleSideNav()">
+				<fa-icon icon="bars"></fa-icon>
+			</button>
+      <a routerLink="home">
+        <span class="app-title-wrap">
+          
+          <span *ngIf="windowWidthGt768" class="navbar-title">Angular{{ngVersion}} with Bootstrap 4 playground</span>
+          <span *ngIf="!windowWidthGt768" class="navbar-title">Angular playground</span>
+        </span>
+
+      </a>
+        <span class="flex-spacer"></span>
+        <ul class="nav list-inline">
+          <li class="list-inline-item"><a routerLink="home" class="btn" aria-label="Home" title="Home" ><fa-icon icon="home" ></fa-icon></a></li> 
+          <li class="list-inline-item"><a routerLink="notifications" class="btn" aria-label="Notifications" title="Notifications"><fa-icon icon="bell" ></fa-icon></a></li> 
+          <li class="list-inline-item"><a routerLink="login" class="btn" aria-label="Log in" title="Log in"><fa-icon icon="user" ></fa-icon></a></li> 
+          <li class="list-inline-item"></li> 
+        </ul>
+        
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn" aria-label="More" id="more-options-trigger" title="More" ngbDropdownToggle><fa-icon icon="ellipsis-v" ></fa-icon></button>
+          <div ngbDropdownMenu aria-label="More options">
+            <button ngbDropdownItem>Action - 1</button>
+            <button ngbDropdownItem>Another Action</button>
+            <button ngbDropdownItem>Something else is here</button>
+          </div>
+        </div>
+      </nav>
+    </header>

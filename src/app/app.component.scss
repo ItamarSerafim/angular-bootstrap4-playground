@@ -1,10 +1,42 @@
-ul>li{ list-style: none}
-.form-title{
-  text-align: center;
+p {
+  font-family: Lato;
 }
-.form-tool-bar{
+.navbar{
+  background: #c2185b;
+  color: #fff;
+  padding-left:  0;
+  padding-right: 5px;
+  a{
+    color:#fff;
+  }
+  .btn { background: none; color: #fff;}
+}
+.navbar-title{
+  font-size: 1.25rem;
+}
+@media (max-width: 577px) {
+  .app-title-wrap { display: none;}
+}
+#more-options-trigger:after {
+    display: none;
+}
+
+.flex-row {
   display: flex;
-  flex-flow: row;
-  .btn{flex:1}
 }
-.flex{flex:1;}
+
+.container.main {
+    min-height: calc(100vh - 116px);
+    overflow: auto;
+}
+
+
+.main-footer{
+  text-align: center;
+  background-color: #6c757d;
+    color: #c7c7c7;
+  min-height: 58px;
+  .footer-title{
+      margin: 0;
+  }
+}
