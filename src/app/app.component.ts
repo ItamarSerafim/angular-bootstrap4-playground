@@ -8,7 +8,7 @@ import {
   VERSION
 } from "@angular/core";
 import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
-
+import { Link, LinkService } from './core/site-navigation/link.service';
 import { AngularFireDatabase } from "@angular/fire/database";
 
 type BreakPoint = { text: string; val: boolean };
@@ -22,6 +22,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   ngVersion = VERSION.full;
   windowWidth: number;
   windowWidthGt768 = false;
+  
+  sideMenuLinks: Link[];
 
   private breakpointObserverSubscription;
 
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
+    private linkService: LinkService
     // private photoService: PhotoService
   ) {}
 
@@ -52,7 +55,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // TODO: filter links by 'showAt' =  'side-menu'
+    this.linkService.getAll().subscribe(response => {
+      this.sideMenuLinks = response;
+    });
+  }
 
   toggleSideNav() {
   }

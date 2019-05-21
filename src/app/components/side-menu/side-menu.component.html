@@ -1,0 +1,58 @@
+
+  <div class="side-menu-tools-wrap">
+    
+    <div [style.z-index]="topComponent === 'search-bar' ? 10 : 'auto'" class="flex-row sidenav-controls" role="group" aria-label="Side navigation search bar">
+      <div class="input-group">
+      <input #searchBox (blur)="searchBoxOnBlur($event)" type="search" class="form-control"
+      (keyup)="filterLinks($event.target.value)" placeholder="Search links">
+      <div class="input-group-prepend">
+        <span (click)="clearLinksFilter()" class="input-group-text"><fa-icon [icon]="topComponent === 'search-bar' ? 'times' : 'search'" ></fa-icon></span>
+      </div>
+    </div>
+    </div>
+
+    <div [style.z-index]="topComponent === 'main-ctrl-bar' ? 10 : 'auto'"
+      #mainMenuCtrls class="flex-row sidenav-controls" role="group" aria-label="Side navigation controls">
+      <button *ngIf="showLabels"
+      aria-label="Hide side navigation" title="Hide side navigation"
+      type="button" class="btn btn-secondary" (click)="onRequestHideMenu()">
+        <fa-icon icon="angle-left" ></fa-icon>
+      </button>
+      <button 
+      aria-label="Toggle menus labels" 
+      title="Toggle menus labels"
+      [style.width]="!showLabels ? '100%' : ''"
+      (click)="showLabels = !showLabels"
+      type="button" class="btn btn-secondary"><fa-icon icon="text-width" ></fa-icon></button>
+      <span class="flex-spacer" *ngIf="showLabels"></span>
+      <!-- <input type="search" (keyup)="filterLinks(this.value)"> -->
+      <button type="button" *ngIf="showLabels"
+        aria-label="Find menu item" title="Find menu item"
+        (click)="focusSearchBox()"
+        class="btn btn-secondary"><fa-icon icon="search" ></fa-icon></button>
+      <button type="button" 
+        *ngIf="showLabels"
+        aria-label="Expand all menus" 
+        title="Expand all menus" 
+        class="btn btn-secondary"><fa-icon icon="angle-double-down" ></fa-icon></button>
+      
+    </div>
+
+  </div>
+
+
+<ul class="list-group">
+  <li class="list-group-item flex-row" 
+    [ngClass]="{'labels-hidden': !showLabels}" *ngFor="let link of filteredLinksendering">
+    <a 
+      class="btn link-item-wrap"
+      [routerLink]="link.path" 
+      [title]="link.title"
+      [attr.aria-label]="link.title"
+    >      
+      <span *ngIf="showIcons" class="btn menu-icon"><fa-icon [icon]="link.icon" ></fa-icon></span>
+      <span *ngIf="showLabels" class="menu-item-text">{{link.title}}</span> 
+    </a>
+    
+  </li>
+</ul>
