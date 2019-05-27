@@ -60,7 +60,7 @@ export class Link {
     return null;
   }
   private getChildren(links: any[]): Link[] {
-    return links.map(item => {      
+    return links.map(item => {
       return new Link(item);
     })
   }
@@ -77,15 +77,15 @@ enum LinkTypes {
 })
 export class LinkService {
 
-  private seedLinks: Array<Link> = seedLinks;
-  basePath: string = 'links';
+  // private seedLinks: Array<any> = seedLinks;
+  basePath = 'links';
 
   constructor( private http: HttpClient) {
   }
 
   // Example: .get({params: {sort: 'order,asc', filter: 'showAt eq side-menu'}})
 
-  getAll<link>(): Observable<Link[]> {
+  getAll<link>(): Observable<any[]> {
     return of(seedLinks);
   }
 

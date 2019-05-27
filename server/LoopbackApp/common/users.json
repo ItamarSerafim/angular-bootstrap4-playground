@@ -1,0 +1,25 @@
+{
+  "ids": {
+    "User": 5,
+    "AccessToken": 5,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1
+  },
+  "models": {
+    "User": {
+      "1": "{\"password\":\"$2a$10$WL1r3SJGQxAuQSzjHxOgeONoCdWF6.bdr6jvaJ7nIJYwzere7XMdy\",\"email\":\"saladatododia@hotmail.com\",\"id\":1}",
+      "2": "{\"password\":\"$2a$10$ptVByTzg274slxKwiGQZvultKTcbzyLpynElb6Ha5fN9Sqp6jG0/m\",\"email\":\"saladatododia001@hotmail.com\",\"id\":2}",
+      "3": "{\"password\":\"$2a$10$9HfYRhLvhfpBfGNqojG7CeoN/f0F6PqpsYqh9r5QImtmy2Z49MmtC\",\"email\":\"saladatododia002@hotmail.com\",\"id\":3}",
+      "4": "{\"password\":\"$2a$10$Uvk//NDWX2LHlO0e/dZJa.vDQMOLq.Xnu8Ko25U22Bx.K//Vmfg6.\",\"email\":\"saladatododia003@hotmail.com\",\"id\":4}"
+    },
+    "AccessToken": {
+      "C6fhAVNRqzJu0ZOeeirx2kPyB0BxDy3y6ewRWFmMllMz4qjD2UWXyT9rGq9N3zYF": "{\"id\":\"C6fhAVNRqzJu0ZOeeirx2kPyB0BxDy3y6ewRWFmMllMz4qjD2UWXyT9rGq9N3zYF\",\"ttl\":1209600,\"created\":\"2019-05-27T03:44:04.623Z\",\"userId\":1}",
+      "TNw7dlpXiZIp0mCekVZxyKXiJA8VEDw29zcdJwb8J1xABW5D5f8EY6J5JA4O5Rbk": "{\"id\":\"TNw7dlpXiZIp0mCekVZxyKXiJA8VEDw29zcdJwb8J1xABW5D5f8EY6J5JA4O5Rbk\",\"ttl\":1209600,\"created\":\"2019-05-27T04:42:56.342Z\",\"userId\":1}",
+      "qjfJArlGft2nHDpqYeKqiLbxsOD0MFeCRuqGDL3oMNSigCovViyuGuAqdVW73NQY": "{\"id\":\"qjfJArlGft2nHDpqYeKqiLbxsOD0MFeCRuqGDL3oMNSigCovViyuGuAqdVW73NQY\",\"ttl\":1209600,\"created\":\"2019-05-27T04:46:46.211Z\",\"userId\":1}"
+    },
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {}
+  }
+}

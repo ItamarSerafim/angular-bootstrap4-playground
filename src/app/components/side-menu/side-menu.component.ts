@@ -1,4 +1,12 @@
-import { Component, Input, Output, OnInit, ViewChild, EventEmitter, ElementRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnInit,
+  ViewChild,
+  EventEmitter,
+  ElementRef
+} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Link } from '../../core/site-navigation/link.service';
 
@@ -9,24 +17,22 @@ import { Link } from '../../core/site-navigation/link.service';
 })
 export class SideMenuComponent implements OnInit {
   @Input() links: Link[] = [];
-  filteredLinksendering: Link[];
+  filteredLinks: Link[];
   @Input() expandido: Boolean;
   @Input() config: any;
-  @Input() showLabels: boolean = true;
-  @Input() showIcons: boolean = true;
+  @Input() showLabels = true;
+  @Input() showIcons = true;
   @Output() requestHideMenu = new EventEmitter();
   @ViewChild('searchBox') searchBox: ElementRef;
-  topComponent = 'main-ctrl-bar';// 'search-bar';
-  constructor(
-    private _sanitizer: DomSanitizer
-  ) {}
+  topComponent = 'main-ctrl-bar'; // 'search-bar';
+  constructor(private _sanitizer: DomSanitizer) {}
 
-  focusSearchBox(){
+  focusSearchBox() {
     this.topComponent = 'search-bar';
     this.searchBox.nativeElement.focus();
   }
   ngOnInit() {
-    this.filteredLinksendering = this.links;
+    this.filteredLinks = this.links;
     // TODO: implement save to server
     // if (this.menuItems.length <= 0) {
     //     this.menuService.list().toPromise().then((menu: MenuItem[]) => {
@@ -37,33 +43,41 @@ export class SideMenuComponent implements OnInit {
     // }
   }
 
-  onRequestHideMenu(){
+  onRequestHideMenu() {
     this.requestHideMenu.emit();
   }
 
-  clearLinksFilter(){ 
-    this.filteredLinksendering = this.links;
-    this.searchBox.nativeElement.value = ''; 
+  clearLinksFilter() {
+    this.filteredLinks = this.links;
+    this.searchBox.nativeElement.value = '';
     this.topComponent = '';
   }
-  searchBoxOnBlur($event){
-    if($event.target.value) { return; }
+  searchBoxOnBlur($event) {
+    const val = ($event.target.value || '').trim();
+    if ($event.target.value) {
+      return;
+    }
+    this.filteredLinks = this.links;
     this.topComponent = '';
   }
 
-  filterLinks(term: string ){
+  filterLinks(term: string) {
     console.log(term);
     let termStr = (term || '').trim().toLowerCase();
-    if(!termStr){
-      this.filteredLinksendering = this.links;
+    if (!termStr) {
+      this.filteredLinks = this.links;
       return true;
     }
-    this.filteredLinksendering = this.links.filter( (link: Link) => {
+    this.filteredLinks = this.links.filter((link: Link) => {
       return (link.title || '').toLowerCase().indexOf(termStr) > -1;
-    })
+    });
+    if ( this.filteredLinks && this.filteredLinks.length === 0 ) {
+      const link = new Link({title: 'Nothing found!', id: 0, path: '#', icon: 'unlink'});
+      this.filteredLinks.push(link);
+    }
   }
 
-// TODO: implement image icon
+  // TODO: implement image icon
   getBackground(image) {
     return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
   }
@@ -80,12 +94,14 @@ export class SideMenuComponent implements OnInit {
 @Component({
   selector: 'app-sub-menu',
   template: `
-    <ul class="list-group submenu">
-      <li class="list-group-item flex-row" *ngFor="let link of menuItems">
-        <a href="" class="btn link-item-wrap">      
-          <span class="btn menu-icon"><fa-icon [icon]="link.icon" ></fa-icon></span>
-          <span class="menu-item-text">{{link.title}}</span> 
-        </a>        
+    <ul class='list-group submenu'>
+      <li class='list-group-item flex-row' *ngFor='let link of menuItems'>
+        <a href='' class='btn link-item-wrap'>
+          <span class='btn menu-icon'
+            ><fa-icon [icon]='link.icon'></fa-icon
+          ></span>
+          <span class='menu-item-text'>{{ link.title }}</span>
+        </a>
       </li>
     </ul>
   `,
@@ -95,7 +111,7 @@ export class SideMenuItemComponent extends SideMenuComponent {
   @Input()
   menuItems: any[] = [];
 
-  constructor( _sanitizer?: DomSanitizer) {
-    super( undefined);
+  constructor(_sanitizer?: DomSanitizer) {
+    super(undefined);
   }
 }

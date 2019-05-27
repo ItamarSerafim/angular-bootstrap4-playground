@@ -20,8 +20,7 @@
           >
         </span>
       </a>
-      <span class="flex-spacer"></span>
-      <ul class="nav list-inline">
+      <ul class="nav list-inline ml-auto">
         <li class="list-inline-item">
           <a routerLink="home" class="btn" aria-label="Home" title="Home"
             ><fa-icon icon="home"></fa-icon
@@ -37,9 +36,12 @@
           ></a>
         </li>
         <li class="list-inline-item">
-          <a routerLink="login" class="btn" aria-label="Log in" title="Log in"
-            ><fa-icon icon="user"></fa-icon
-          ></a>
+            <a routerLink="login" *ngIf="!sessionService.isLoggedIn" class="btn" aria-label="Log in" title="Log in"
+              ><fa-icon icon="user"></fa-icon
+            ></a>
+            <a routerLink="logout" class="btn" *ngIf="sessionService.isLoggedIn" aria-label="Log out" title="Log out">
+              <fa-icon icon="sign-out-alt" aria-hidden="true"></fa-icon>
+            </a>
         </li>
         <li class="list-inline-item"></li>
       </ul>
@@ -55,7 +57,10 @@
           <fa-icon icon="ellipsis-v"></fa-icon>
         </button>
         <div ngbDropdownMenu aria-label="More options">
-          <button ngbDropdownItem>Action - 1</button>
+          <!-- TODO: Search on how to use routerLink in DropdownMenu component -->
+          <button ngbDropdownItem routerLink="register">
+            <a routerLink="register" class="text-primary"><fa-icon icon="user"></fa-icon> Register</a>
+          </button>
           <button ngbDropdownItem>Another Action</button>
           <button ngbDropdownItem>Something else is here</button>
         </div>
@@ -78,7 +83,7 @@
 
       <!-- <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-secondary" *ngFor="let breakPoint of breakPoints; let i = index">
-            {{breakPoint.text}}</button>            
+            {{breakPoint.text}}</button>
         </div> -->
     </div>
   </main>

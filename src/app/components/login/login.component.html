@@ -1,1 +1,42 @@
-<h1>Hello Login</h1>
+<!--
+  x. Accessibility
+  x. Fields validations
+    x. Validations checklist
+    x. Validation messages
+  x. Standardized layout details:
+     Title, paddings, form (max)width, (bottom)toolbar position
+  x. Disable browser validation?
+ -->
+
+<div class="component-wrap mt-5">
+  <form action="" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" >
+    <h3 class="form-title text-center">Login</h3>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" class="form-control" required
+        autocomplete="username"
+        [(ngModel)]="login.username" #username="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && username.invalid }">
+        <div *ngIf="f.submitted && username.invalid" class="input-messages">
+          <small *ngIf="username.errors.required" class="form-text text-danger">Username is required</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" class="form-control" required
+        autocomplete="current-password"
+        [(ngModel)]="login.password" #password="ngModel"
+        [ngClass]="{'is-invalid': f.submitted && password.invalid}">
+        <div *ngIf="f.submitted && password.invalid" class="input-messages">
+          <small *ngIf="password.errors.required" class="form-text text-danger">Password is required</small>
+        </div>
+    </div>
+
+    <div class="form-toolbar flex-row">
+        <a class="btn btn-default text-primary ml-auto mr-2" routerLink="../register" aria-label="register">Register</a>
+        <button class="btn btn-primary" aria-label="login" >Login</button>
+    </div>
+    <p><a href="../password-recovery" class="text-primary">I forgot my user or password...</a></p>
+  </form>
+</div>

@@ -1,0 +1,117 @@
+<div class="component-wrap mt-5">
+  <form [formGroup]="form" #f="ngForm">
+    <h3 class="form-title text-center">Register</h3>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        minlength="3"
+        maxlength="255"
+        formControlName="email"
+      />
+
+      <small
+        align="end"
+        class="form-text text-right"
+        *ngIf="form.get('email').dirty && form.get('email').value?.length"
+      >
+        {{ form.get("email").value.length }} of 255 characters
+      </small>
+      <div class="input-messages" *ngIf="f.invalid && form.get('email').dirty">
+        <!-- Make sure ALL your validation messages show here -->
+        <small
+          *ngIf="form.get('email').errors?.required"
+          class="form-text text-danger"
+          >Email is required</small
+        >
+        <small
+          *ngIf="form.get('email').errors?.email"
+          class="form-text text-danger"
+          >Please enter a valid email</small
+        >
+        <small
+          *ngIf="form.get('email').errors?.maxlength"
+          class="form-text text-danger"
+          >Max length is 255</small
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        required
+        formControlName="password"
+        autocomplete="new-password"
+      />
+      <div
+        class="input-messages"
+        *ngIf="f.invalid && form.get('password').dirty"
+      >
+      <small
+        *ngIf="form.get('password').errors?.required"
+        class="form-text text-danger"
+        >Password is required</small
+      >
+      <small
+        *ngIf="form.get('password').errors?.minlength"
+        class="form-text text-danger"
+        >Password must have at minimum 5 and at maximum 32 characters.
+      </small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirm-password">Confirm password:</label>
+      <input
+        type="password"
+        class="form-control"
+        name="confirm-password"
+        required
+        formControlName="confirm-password"
+        autocomplete="new-password"
+      />
+      <div
+        class="input-messages"
+        *ngIf="f.invalid && form.get('confirm-password').dirty"
+      >
+        <small
+          *ngIf="form.get('confirm-password').errors?.equality"
+          class="form-text text-danger"
+          >Field Confirm Password must match field Password</small
+        >
+      </div>
+    </div>
+
+    <!-- Form messages -->
+
+    <p class="alert alert-danger" *ngIf="form.status === 'INVALID' && showFormIsInvalid">You have invalid fields</p>
+    <p class="alert alert-primary" *ngIf="serverMessages.info">
+      <span class="spinner-border text-primary mr-2" role="status"></span>
+      {{ serverMessages.info }}
+    </p>
+    <p class="alert alert-danger" *ngIf="serverMessages.error">
+      {{ serverMessages.error }}
+    </p>
+
+    <!-- Form toolbar -->
+
+    <div class="form-toolbar flex-row">
+        <a class="btn btn-default ml-auto mr-2 text-primary" routerLink="../login" aria-label="login">I'm already registered</a>
+      <button
+        class="btn btn-primary"
+        aria-label="register"
+        (click)="onSubmit()"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+
+</div>
