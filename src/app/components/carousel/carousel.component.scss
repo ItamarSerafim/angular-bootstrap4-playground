@@ -1,0 +1,16 @@
+/deep/ .carousel-item.active{
+    display: block;
+    background-color: #333f50;
+    img {
+      max-height: 481px;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+}
+
+/deep/ .carousel-item img {
+  max-height: 481px;
+  margin: 0 auto;
+  max-width: 100%;
+  display: block;
+}

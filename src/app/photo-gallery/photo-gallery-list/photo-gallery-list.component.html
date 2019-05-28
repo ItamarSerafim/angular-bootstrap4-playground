@@ -1,0 +1,7 @@
+<h1>Photo Gallery List coming to life</h1>
+<ul>
+  <li *ngFor="let item of ['Album 001', 'Album 002', 'Album 003', 'Album 004' ]">
+    <!--<fa-icon icon="edit"></fa-icon> -->
+    <button [routerLink]="['']">Edit</button> {{item}}
+  </li>
+</ul>

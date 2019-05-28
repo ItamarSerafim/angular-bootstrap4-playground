@@ -31,6 +31,9 @@ import { AppComponent } from './app.component';
 import { LoginService } from './core/login.service';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterWelcomeComponent } from './components/register/register-welcome.component';
+import { AlbumComponent } from './components/album/album.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { PhotoService } from './core/photo-gallery/photo-gallery.service';
 
 @NgModule({
   imports: [
@@ -57,9 +60,11 @@ import { RegisterWelcomeComponent } from './components/register/register-welcome
     LoginComponent,
     RegisterWelcomeComponent,
     RegisterComponent,
+    CarouselComponent,
+    AlbumComponent
 
   ],
-  providers: [LinkService, LoginService],
+  providers: [LinkService, LoginService, PhotoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,0 +1,37 @@
+
+  <p class="album-screen-title clearfix" >
+    <span class="btn-group">
+
+      <button type="button" class="btn btn-outline-primary album-selector-trigger"
+      (click)="showAlbumsPane = !showAlbumsPane"
+      [ngClass]="{'dropdown-toggle': !showAlbumsPane}" >
+      <span  [hidden]="!showAlbumsPane"><fa-icon icon="angle-left"  ></fa-icon>&nbsp;</span>
+      Playing album:
+        <span class="album-title">{{activeAlbum?.title || 'no album'}}</span>
+        <!-- <span [hidden]="showAlbumsPane"><fa-icon icon="sort-down"  ></fa-icon>&nbsp;</span> -->
+      </button>
+    </span>
+
+  </p>
+
+  <div class="album-and-slideshow" [ngClass]="{'album-open': showAlbumsPane}" >
+    <div class="albums-wrap row"  [ngClass]="{'open': showAlbumsPane, 'closed': !showAlbumsPane}">
+
+        <div class="col-12 album-item" *ngFor="let album of albums; let i = index" >
+          <figure class="figure">
+            <a [routerLink]="['/home/slides']" [queryParams]="{ albumId: i }" class="album-trigger clearfix">
+              <img [src]="album.thumbnail" class="figure-img img-fluid rounded" [attr.alt]="album.descr">
+              <figcaption class="figure-caption">
+                <h6 class="title">{{album.title}}</h6>
+                <p class="descr">{{album.descr}}</p>
+              </figcaption>
+            </a>
+          </figure>
+        </div>
+
+    </div>
+    <div class="carousel-wrap">
+      <app-carousel [slides]="activeAlbum.slides" ></app-carousel>
+    </div>
+
+  </div>

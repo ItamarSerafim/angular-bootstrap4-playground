@@ -9,6 +9,13 @@ import { RegisterWelcomeComponent } from './components/register/register-welcome
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: 'home', component: HomeComponent,
+    children: [
+      {path: 'slides', component: HomeComponent}
+    ]
+  },
   {path: 'register', component: RegisterComponent },
   {path: 'welcome-new-user', component: RegisterWelcomeComponent },
   {path: 'login', component: LoginComponent },

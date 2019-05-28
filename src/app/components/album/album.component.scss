@@ -1,0 +1,121 @@
+
+.album-and-slideshow {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  position: relative;
+  .albums-wrap{
+      transition: all .3s;
+      background-color: #fff;
+      z-index: 100;
+    &.open{ 
+      transform: translateX(0);
+    }
+    &.closed{ 
+      transform: translateX(-100%);
+      width: 100%;
+    }
+
+  }
+  .album-selector-trigger {
+    background: none;
+  }
+
+  .album-selector-trigger .album-title {
+    font-style: italic;
+    color: browny;
+    padding-right: .5rem;
+    font-size: 110%;
+  }
+  .album-selector-trigger .album-title {
+      color: brown!important;
+  }
+  
+  .carousel-wrap{
+    position: absolute;
+    max-width: 100%;
+  }
+  .figure {
+      padding: 10px;
+      box-shadow: 1px 1px 1120px 15px #48515f inset;
+      border-radius: 10px;
+      display: block;
+      .figure-caption {
+        color: #fff;
+      }
+      
+  }
+
+  .album-trigger {
+      display: block;
+      border-radius: 9px;
+  }
+  img.figure-img.img-fluid.rounded {
+    max-width: 7rem;
+    float: left;
+    margin-right: .8rem;
+    box-shadow: 3px 3px 10px 1px black;
+    padding: 5px;
+    /* filter: grayscale(0.7); */
+    background-color: #607D8B;
+  }
+
+} 
+
+@media (min-width: 992px) { 
+  .album-and-slideshow {
+    &.album-open {
+      .albums-wrap{
+        margin-left: 0;
+      }
+      .carousel-wrap{
+        width: calc(100% - 175px);
+        position: inherit!important;
+      }
+      
+    }
+  }
+
+  .albums-wrap{
+    width: 175px!important;
+    margin-left: -175px;    
+      img {
+        max-width: 100%!important;
+      }
+      .figure {
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          box-shadow: none;
+          padding: 0;
+          margin: 0;
+          .figure-caption {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            &:hover{
+              .descr { transform: translateX(0);}
+            }
+
+            .title, .descr {
+              bottom: 0;
+              color: #fff;
+              font-size: 1.2rem;
+              text-shadow: 1px 1px 3px #000;
+              text-align: center;
+              width: 144px;
+
+            }
+            .descr {font-size: inherit; transform: translateX(-100%);}
+        }
+      }
+  }
+  .carousel-wrap{
+    width: 100%;
+    position: inherit!important;
+    transition: all .3s;
+  }
+}

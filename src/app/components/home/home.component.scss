@@ -1,0 +1,56 @@
+.container {
+  max-width: 1500px;
+  padding: 1rem 0;
+  a {
+    word-break: break-all;
+  }
+}
+.component-wrap { 
+}
+.albun-and-slideshow {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  .albuns-wrap{
+    flex-basis: 9rem;
+  }
+
+  .carusel-wrap{
+    padding: 0 1rem;
+    width: calc(100% - 175px);
+  }
+
+} 
+.figure {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    .figure-caption {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &:hover{
+        .descr { transform: translateX(0);}
+      }
+
+      .title, .descr {
+        bottom: 0;
+        color: #fff;
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 3px #000;
+        text-align: center;
+        width: 144px;
+
+      }
+      .descr {font-size: inherit; transform: translateX(-100%);}
+  }
+}
+
+
+app-carousel{
+  display: block;
+  max-width: 98%;
+}
