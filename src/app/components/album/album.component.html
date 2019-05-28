@@ -19,7 +19,7 @@
 
         <div class="col-12 album-item" *ngFor="let album of albums; let i = index" >
           <figure class="figure">
-            <a [routerLink]="['/home/slides']" [queryParams]="{ albumId: i }" class="album-trigger clearfix">
+            <a [routerLink]="['/home/slides']" [queryParams]="{ albumId: i }" class="album-trigger clearfix" (click)="setAlbum(i)">
               <img [src]="album.thumbnail" class="figure-img img-fluid rounded" [attr.alt]="album.descr">
               <figcaption class="figure-caption">
                 <h6 class="title">{{album.title}}</h6>

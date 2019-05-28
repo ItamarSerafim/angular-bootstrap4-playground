@@ -21,10 +21,12 @@ export class AlbumComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
+  setAlbum(id: number) {
+    this.activeAlbum = this.albums[id];
+  }
+
   ngOnInit() {
     const albumId = +this.activatedRoute.snapshot.queryParams['albumId'] || this.activeAlbumIndex;
     this.activeAlbum = this.albums[albumId || 0];
-    debugger;
-
   }
 }
